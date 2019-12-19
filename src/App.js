@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "../node_modules/materialize-css/dist/css/materialize.min.css";
+import "../node_modules/materialize-css/dist/js/materialize.min.js";
+import "./App.css";
+import Addition from "./Addition/addition";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      numbers: [
+        { number: Math.floor(Math.random() * (10 - 0 + 1)) + 2 },
+        { number: Math.floor(Math.random() * (10 - 0 + 1)) + 2 }
+      ]
+    };
+  }
+
+  generateEquationHandler = () => {
+    const minNum = 2;
+    const maxNum = 20;
+    const randomNumber =
+      Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+    const randomNumberTwo =
+      Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+
+    this.setState({
+      numbers: [{ number: randomNumber }, { number: randomNumberTwo }]
+    });
+  };
+  render() {
+    const { generateEquationHandler } = this;
+    const { numbers } = this.state;
+    return (
+      <div className="App">
+        <h1>Emily's Kinder App</h1>
+        <button
+          className="waves-effect waves-light btn"
+          onClick={generateEquationHandler}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          Generate
+        </button>
+        <Addition
+          firstNumber={numbers[0].number}
+          secondNumber={numbers[1].number}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
