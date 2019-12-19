@@ -21,7 +21,7 @@ class App extends Component {
     const randomNumber =
       Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
     const randomNumberTwo =
-      Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+      Math.floor(Math.random() * (randomNumber - minNum + 1)) + minNum;
 
     this.setState({
       numbers: [{ number: randomNumber }, { number: randomNumberTwo }]
