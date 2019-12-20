@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../node_modules/materialize-css/dist/css/materialize.min.css";
 import "../node_modules/materialize-css/dist/js/materialize.min.js";
-import "./App.css";
+import "./App.scss";
 import Addition from "./Addition/addition";
 
 class App extends Component {
