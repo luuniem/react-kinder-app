@@ -27,8 +27,13 @@ class App extends Component {
       numbers: [{ number: randomNumber }, { number: randomNumberTwo }]
     });
   };
+
+  submitHandler = event => {
+    event.preventDefault();
+    console.log("submitted");
+  };
   render() {
-    const { generateEquationHandler } = this;
+    const { generateEquationHandler, submitHandler } = this;
     const { numbers } = this.state;
     return (
       <div className="App">
@@ -42,6 +47,7 @@ class App extends Component {
         <Addition
           firstNumber={numbers[0].number}
           secondNumber={numbers[1].number}
+          submit={submitHandler}
         />
       </div>
     );
